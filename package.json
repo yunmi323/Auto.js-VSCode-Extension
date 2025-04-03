@@ -53,6 +53,21 @@
     "menus": {
       "editor/title": [
         {
+          "command": "extension.startServer",
+          "group": "navigation",
+          "when": "editorLangId == autojs"
+        },
+        {
+          "command": "extension.save",
+          "group": "navigation",
+          "when": "editorLangId == autojs"
+        },
+        {
+          "command": "extension.stopAll",
+          "group": "navigation",
+          "when": "editorLangId == autojs"
+        },
+        {
           "when": "resourceLangId == javascript",
           "command": "extension.openDocument",
           "group": "navigation@2"
