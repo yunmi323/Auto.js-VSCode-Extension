@@ -458,6 +458,19 @@ export function activate(context: vscode.ExtensionContext) {
     // @ts-ignore
     console.log(context.extension.packageJSON.version)
   })
+  const createStatusButton = (command: string, text: string, tooltip: string, priority: number) => {
+    const button = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, priority);
+    button.text = text;
+    button.tooltip = tooltip;
+    button.command = `extension.${command}`;
+    button.show();
+    context.subscriptions.push(button);
+  };
+
+  // 添加三个按钮
+  createStatusButton('startServer', '$(debug-start) 开启服务', '启动Auto.js服务', 1000);
+  createStatusButton('save', '$(save-all) 保存到所有设备', '同步脚本到所有设备', 999);
+  createStatusButton('stopAll', '$(debug-stop) 停止所有脚本', '终止所有运行中的脚本', 998);
 }
 
 export function deactivate() {
